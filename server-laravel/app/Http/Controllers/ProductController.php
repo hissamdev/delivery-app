@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -29,5 +30,16 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return $product;
+    }
+
+    public function store(Request $request, Product $product)
+    {
+        $validated = $request->validate([
+            "name" => "required|string",
+        ]);
+
+        if (isset($validated["name"])) {
+            $validated["slug"] = Str::slug($validated["name"]);
+        }
     }
 }
