@@ -38,7 +38,8 @@ class ProductController extends Controller
             "name" => ["required", "string", "unique:products,name"],
             // desc, price, stock
             "description" => ["string"],
-            "price" => ["required", "numeric", "gt:0"]
+            "price" => ["required", "numeric", "gt:0"],
+            "stock" => ["numeric"]
         ]);
 
         // [
@@ -52,6 +53,6 @@ class ProductController extends Controller
             $validated["slug"] = Str::slug($validated["name"]);
         }
 
-
+        return response()->json($validated, 210);
     }
 }
