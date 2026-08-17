@@ -35,11 +35,23 @@ class ProductController extends Controller
     public function store(Request $request, Product $product)
     {
         $validated = $request->validate([
-            "name" => "required|string",
+            "name" => ["required", "string", "unique:products,name"],
+            // desc, price, stock
+            "description" => ["string"],
+            "price" => ["required", "numeric", "gt:0"]
         ]);
+
+        // [
+        //     "name" => "required|string",
+        //     // desc, price, stock
+        //     "description" => "string",
+        //     "price" => "integer"
+        // ]
 
         if (isset($validated["name"])) {
             $validated["slug"] = Str::slug($validated["name"]);
         }
+
+
     }
 }
