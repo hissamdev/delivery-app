@@ -5,15 +5,27 @@ import { productSeed } from "../utils/product-seed";
 
 export default function Home() {
   return (
-    <main>
-      <div>
-        {
-          productSeed.map((product) => (
-            <div>
-
-            </div>
-          ))
-        }
+    <main className="py-14">
+      <div className="max-w-5xl m-auto">
+        <h1 className="font-bold text-2xl">Explore our products</h1>
+        <div className="mt-5 flex flex-col">
+          {
+            productSeed.map((product) => (
+              <div key={product.name} className="py-4 border-t flex gap-3 items-center">
+                <div>
+                  <div className="bg-gray-300 w-10 aspect-square"></div>
+                </div>
+                <div>
+                  <div>
+                    <h2 className="text-lg font-semibold">{product.name}</h2>
+                    <p>{product.desc}</p>
+                  </div>
+                  <button>View</button>
+                </div>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </main>
   );
