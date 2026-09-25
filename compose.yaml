@@ -1,0 +1,15 @@
+services:
+    postgres:
+        image: postgres
+        container_name: main-db
+        environment:
+            POSTGRES_DB: delivery-main
+            POSTGRES_USER: psql
+            POSTGRES_PASSWORD: password
+        ports:
+            - "5435:5432"
+        volumes:
+            - postgres_data:/var/lib/postgres
+
+volumes:
+    postgres_data:
