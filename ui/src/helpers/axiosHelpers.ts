@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = process.env.NEXT_PUBLIC_LARAVEL_SERVER;
+const SERVER_URL = `${process.env.NEXT_PUBLIC_LARAVEL_SERVER}/api`;
 
 // Include "/" when passing route
 export async function getReq(route: string) {
